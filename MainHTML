@@ -34,8 +34,6 @@
          \___________/
           \_\_     \_\_
            
-
-            if you see this send me an ASCII duck
             
                
                */
@@ -362,7 +360,7 @@
         
         <div id="spark-container"> </div>
     
-        <script src="Sparks.js"> </script>
+        <script src="Sparks2.js"> </script>
     
         <script src="Search.js"> </script>
         
