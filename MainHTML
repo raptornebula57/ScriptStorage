@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&amp;display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>New Tab</title>
+        <!--<svg style="display: none;">
+          
+            <filter id="ripple">
+                
+                <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="1" result="noise">
+              
+                    <animate attributeName="baseFrequency" values="0.01;0.00;0.01" dur="2s" repeatCount="indefinite" />
+            
+                </feTurbulence>
+            
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="20" xChannelSelector="R" yChannelSelector="G"/>
+          
+            </filter>
+        
+        </svg> -->
+
+        <style>
+            
+            /* 
+
+            
+     ____       /\ /\      _____
+    /    \_____(=*Y*=)   <(QUACK) 
+         /           \
+         \___________/
+          \_\_     \_\_
+           
+
+            if you see this send me an ASCII duck
+            
+               
+               */
+            
+            @keyframes spark-move {
+                0% {transform: translate(-40px,5px); opacity: 0;  box-shadow: 0 0 4px 3px rgba(250,250,250,1);
+                }
+                25% {transform: translate(20px,-5px); opacity: 1;  box-shadow: 0 0 6px 3px rgba(250,250,250,1);
+                }
+                50% {transform: translate(60px, 0px); opacity: 0.5; box-shadow: 0 0 8px 3px rgba(250,250,250,1);
+                }
+                75% {transform: translate(-10px, 5px); opacity: 0.7; box-shadow: 0 0 6px 3px rgba(250,250,250,1);
+                }
+                100% {transform: translate(0px, -5px); opacity: 0;  box-shadow: 0 0 5px 3px rgba(250,250,250,1);
+                }
+            }
+            @keyframes search-pulse {
+                0%  {background-color: rgba(0,0,0,0.4); box-shadow: 0 0 15px rgba(150,0,250,0);}
+                33% {background-color: rgba(0,0,0,0.4); box-shadow: 0 0 15px rgba(150,0,250,0)}
+                67% {background-color: rgba(0,0,0,0.3); box-shadow: 0 0 5px rgba(150,0,250,0)}
+                100%{background-color: rgba(0,0,0,0.3); box-shadow: 0 0 5px rgba(150,0,250,0)}
+            }
+            
+            @keyframes clock-pulse {
+                0% {text-shadow: 0 0 40px rgba(80,110,255,0.4); color: rgba(3,0,10,0.35);}
+                /*60% {text-shadow: 0 0 30px rgba(130,80,250,0.3); font-size: 100px;}*/
+                100% {text-shadow: 0 0 30px rgba(150,80,250,0.25); color: rgba(3,0,10,0.2);}
+            }
+            
+            @keyframes color_cycle {
+                0% { box-shadow: 0 0 8px rgba(255, 30, 130, 0.4); } 
+                50% { box-shadow: 0 0 8px rgba(255, 100, 255, 0.4); } 
+                100% { box-shadow: 0 0 12px rgba(100, 100, 255, 0.5); } 
+                }
+    
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                /* background-image: url('Waves.png'); */
+                background-color: #000;
+                color: white;
+                font-family: Arial, sans-serif;
+                text-align: center;
+                padding-top: 0px;
+            }
+    
+            form {
+                display: flex;
+                justify-content: center;
+            }
+    
+            input {
+                background-color: rgba(10,10,10,0.0);
+                font-size: 17px !important;
+                height: 25px !important;
+                width: 355px !important;
+                color: #bbbbbb;
+                outline:none;
+                border: 0px solid rgba(0,0,0,0);
+                border-radius: 25px;
+                padding: 5px;
+                transition: background-color 0.4s ease-in-out, 
+                            box-shadow 0.5s ease-in-out, 
+                            transform 2s ease-in-out, 
+                            width 1s ease-in-out, 
+                            height 0.2s ease-in-out,
+                            border 0.5s ease-in-out;
+            }
+            input:hover {
+                background-color:rgba(0,0,0,0.2)
+            }
+                
+            input:focus {
+                width: 495px !important;
+                color: #bbbbbb;
+                outline:none;
+                border: 0px solid rgba(0,0,0,0);
+                border-radius: 25px;
+                padding: 5px;
+                animation: search-pulse 0.5s ease-in-out infinite alternate;
+                animation-delay: 0.25s;
+                transition: background-color 0.5s ease-in-out, 
+                            box-shadow 0.5s ease-in-out, 
+                            transform 2s ease-in-out, 
+                            width 1s ease-in-out,
+                            border 0.5s ease-in-out;
+            }
+            
+            .search-bar {
+                display: flex;
+                flex-direction: row;
+                margin-top: 325px;
+                width: 410px;
+                height: 35px;
+                padding: 5px;
+                gap:3px;
+                border: 1px solid rgba(68,68,68,0.3);
+                border-radius: 25px;;
+                outline: none;
+                background-color: rgba(10,10,10,0.3);
+                color: #bbbbbb;
+                transition: background-color 0.5s ease-in-out, 
+                            box-shadow 0.5s ease-in-out, 
+                            transform 2s ease-in-out, 
+                            width 1s ease-in-out, 
+                            height 0.2s ease-in-out,
+                            border 1s linear;
+            }
+    
+            .search-bar:hover {
+                box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+                animation: color_cycle 2s ease-in-out infinite alternate;
+                border: 1px solid rgba(0,0,0,0);
+                transform: translateY(-2px);
+                transition: background-color 0.3s ease-in-out, 
+                            transform 0.5s ease-in-out, 
+                            width 1s ease-in-out, 
+                            height 0.2s ease-in-out, 
+                            box-shadow 0.25s ease-in-out,
+                            border 1s linear;
+            }
+    
+            .search-bar-focus {
+                width: 550px;
+                background-color: rgba(10,10,10,0.5);
+                box-shadow: 0 0 8px rgba(255, 130, 255, 0.2);
+                transition: width 1s ease-in-out, 
+                            background-color 0.3s ease-in-out, 
+                            transform 0.3s ease-in-out, 
+                            box-shadow 0.5s ease-in-out, 
+                            color_cycle 0.25s ease-in-out;
+            } 
+    
+            button {
+                padding: 10px 15px;
+                font-size: 16px;
+                margin-left: 10px;
+                border: none;
+                background-color: #333333;
+                color: gray;
+                border-radius: 24px;
+                cursor: pointer;
+            }
+    
+            button:hover {
+                background-color: #444444;
+            }
+    
+            #clock {
+                position: absolute;
+                top: 20%;
+                left: 50%;
+                padding: 0px 0px;
+                font-size: 100px;
+                font-weight: bold;
+                font-family: Quicksand, sans-serif;
+                color: rgba(3,0,10,0.35);
+                text-shadow: 0 0 15px rgba(250,100,200,0.35);
+                transform: translate(-50%, -50%);
+                animation: clock-pulse 2s ease-in-out infinite alternate;
+            }
+    
+            .icon img{
+                width: 30px;
+                height: 30px;
+                padding:5px;
+                opacity: 0.4;
+                transition: opacity 0.3s ease-in-out,  scale 0.3s ease-in-out;
+            }
+            
+            .icon img:hover {
+                cursor: pointer;
+                width: 30px;
+                height: 30px;
+                opacity: 1;
+                scale:1.1;
+                transition: opacity 0.3s ease-in-out, scale 0.3s ease-in-out;
+            }
+            
+            .shortcut-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 75px; 
+                gap: 10px;
+            }
+            
+            .shortcut-container:hover {
+                 
+            }
+            
+            .shortcut-bar {
+                display: flex;
+                gap: 20px;
+                opacity: 0;
+                transition: opacity 0.5s ease-in-out;
+                
+            }
+            
+            .shortcut-bar:hover {
+                display: flex;
+                gap: 20px;
+                opacity: 1;
+                transition: opacity 0.5s ease-in-out;
+    
+            }
+            
+            .shortcut {
+                transition: transform 1s ease-in-out, filter 1s ease-in-out; 
+            }
+            
+            .shortcut img:hover {
+                transform: scale(1.1);
+                filter: drop-shadow(0 0 10px rgba(150, 100, 255, 32)) !important;
+                opacity: 0.9;
+                transition: opacity 0.2s ease-in-out, transform 0.3s ease-in-out, filter 0.3s ease-in-out;     
+            }
+            
+            .shortcut img {
+                opacity: 0.6;
+                width: 50px;
+                height: 50px;
+                filter: drop-shadow(0 0 25px rgba(150, 100, 200, 16));
+                transition: opacity 0.2s ease-in-out, transform 0.5s ease-in-out, filter 0.5s ease-in-out;
+            }
+
+            #bg {
+                /*filter: url(#ripple);*/
+                position:absolute;
+                width:100%;
+                height: 100%;
+                z-index:-5;
+                margin-top: 200px;
+            }
+            
+            #spark-container {
+                /*filter: url(#ripple);*/
+                opacity: 0.5;
+                position: absolute;
+                pointer-events: none;
+                width: 100%;
+                height: 100%;
+            }
+            
+            .spark {
+                position: absolute;
+                width: 3px;
+                height: 3px;
+                background: rgba(250,250,250,1); 
+                border-radius: 50%;
+                box-shadow: 0 0 6px 3px rgba(250,250,250,1);
+                z-index: 999;
+                animation: spark-move 5s ease-in-out infinite !important;
+            }
+            
+        </style>
+    </head>
+        
+    <body>
+
+        <div id="bg"> <img src="Waves.png"> </div>
+    
+        <div class="search-bar" id="search-bar">
+            
+            <form action="https://www.google.com/search" method="GET">
+                <input id="search-box" type="text" name="q" placeholder=" Search the Web" autofocus>
+            </form>
+            
+            <div class="icon">
+                <img src="Magnifying-glass.png" id="search-icon">
+            </div>
+            
+        </div>
+    
+        <script async src="https://cse.google.com/cse.js?cx=c3438f4b9624d40ce"></script>
+        <div class="gcse-search"></div>
+    
+        <div id="clock"></div>
+    
+        <script src="clock.js"> </script>
+    
+        <div class="shortcut-container"> 
+            <div class="shortcut-bar">
+                <a href="https://www.google.com/" class="shortcut"> 
+                    <img src="Search.png"> 
+                </a>
+                <a href="https://www.drive.google.com/" class="shortcut"> 
+                    <img src="Drive.png"> 
+                </a>
+                <a href="https://www.gmail.com/" class="shortcut"> 
+                    <img src="Gmail.png"> 
+                </a>
+                <a href="https://www.google.com/maps/" class="shortcut"> 
+                    <img src="Maps.png"> 
+                </a>
+                <a href="https://www.youtube.com/" class="shortcut"> 
+                    <img src="Youtube.png"> 
+                </a>
+                <a href="https://myaccount.google.com/?utm_source=OGB&utm_medium=app" class="shortcut"> 
+                    <img src="Account.png"> 
+                </a>
+            </div>
+            <div class="shortcut-bar">
+                <a href="https://www.bing.com/" class="shortcut"> 
+                    <img src="Bing.png"> 
+                </a>
+                <a href="https://onedrive.live.com/?id=root&cid=641EB9858C6B9CB4&qt=mru" class="shortcut"> 
+                    <img src="Onedrive.png"> 
+                </a>
+                <a href="https://outlook.live.com/mail/0/" class="shortcut"> 
+                    <img src="Outlook.png"> 
+                </a>
+                <a href="https://m365.cloud.microsoft/?auth=1" class="shortcut"> 
+                    <img src="365.png"> 
+                </a>
+                <a href="https://account.microsoft.com/?ref=MeControl&refd=m365.cloud.microsoft" class="shortcut"> 
+                    <img src="Microsoft.png"> 
+                </a>
+            </div>
+        </div>
+        
+        <div id="spark-container"> </div>
+    
+        <script src="Sparks.js"> </script>
+    
+        <script src="Search.js"> </script>
+        
+    </body>
+
+    <!-- 
+
+    (oVo)
+    
+    the owl knows your secrets.
+    
+    -->
+</html>
